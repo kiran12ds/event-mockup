@@ -1,0 +1,95 @@
+/* src/styles/CanvasEditor.css */
+
+.editor-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.editor-sidebar {
+  width: 25%;
+  background-color: #fdf6f9;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #eee;
+}
+
+.editor-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #d63384;
+}
+
+.editor-subtitle {
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
+  color: #333;
+}
+
+.item-preview {
+  margin-bottom: 20px;
+}
+
+.item-label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.item-image {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.item-image:hover {
+  transform: scale(1.05);
+}
+
+.dropdown,
+.upload-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.upload-label {
+  display: block;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.btn-delete,
+.btn-download,
+.btn-remove {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #ff6b81;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-delete:hover,
+.btn-download:hover,
+.btn-remove:hover {
+  background-color: #e6495f;
+}
+
+.editor-canvas {
+  flex-grow: 1;
+  background-color: #fff;
+}
+
+.canvas-stage {
+  display: block;
+  margin: auto;
+  background-color: #ffffff;
+}
