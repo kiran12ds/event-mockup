@@ -2,19 +2,16 @@
 import React, { useRef, useState } from 'react';
 import { Stage, Layer, Image as KonvaImage, Transformer, Group, Text } from 'react-konva';
 import useImage from '../hooks/useImage';
+import PNG_ASSETS from '../assets/pngAssets';
 import BACKGROUNDS from '../assets/backgrounds';
-
 import '../styles/CanvasEditor.css';
-
-import DecorDropdown from '../components/DecorDropdown';
-
 
 const DraggableImage = ({ src, id, onSelect, isSelected, onDelete }) => {
   const [image] = useImage(src);
   const shapeRef = useRef();
   const trRef = useRef();
   const [position, setPosition] = useState({ x: 100, y: 100 });
-  const [size, setSize] = useState({ width: 120, height: 80 });
+  const [size, setSize] = useState({ width: 200, height: 120 });
 
   React.useEffect(() => {
     if (isSelected && trRef.current && shapeRef.current) {
@@ -41,7 +38,7 @@ const DraggableImage = ({ src, id, onSelect, isSelected, onDelete }) => {
         ref={shapeRef}
         width={size.width}
         height={size.height}
-        onTransformEnd={() => {
+        onTransformEnd={(e) => {
           const node = shapeRef.current;
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
@@ -55,12 +52,13 @@ const DraggableImage = ({ src, id, onSelect, isSelected, onDelete }) => {
           });
         }}
       />
+
       {isSelected && (
         <>
           <Transformer ref={trRef} />
           <Text
             text="🗑️"
-            fontSize={18}
+            fontSize={20}
             fill="red"
             x={size.width - 10}
             y={-30}
@@ -78,14 +76,11 @@ const CanvasEditor = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [roomBg, setRoomBg] = useState(BACKGROUNDS[0].src);
   const [customBg, setCustomBg] = useState(null);
-  const [showLinks, setShowLinks] = useState(false);
 
- const addElement = (item) => {
+  const addElement = (src) => {
     const newElement = {
       id: Date.now().toString(),
-      name: item.name,
-      src: item.src,
-      affiliateLink: item.affiliateLink,
+      src
     };
     setElements((prev) => [...prev, newElement]);
     setSelectedId(newElement.id);
@@ -134,12 +129,38 @@ const CanvasEditor = () => {
 
   return (
     <div className="editor-container">
-      <div className="editor-sidebar">
-        <h1 className="editor-title">Event Mockup Editor</h1>
-        <p className="editor-description"></p>
-        
+      <div className="editor-sidebar bg-purple-200">
         <h2 className="editor-title">Decor Items</h2>
-          <DecorDropdown onSelect={addElement} />
+
+        <div className="item-preview">
+          <p className="item-label">🎀 Pink Garland</p>
+          <img
+            src={PNG_ASSETS.pinkBalloonGarland}
+            alt="Pink Balloon Garland"
+            className="item-image w-16 h-16"
+            onClick={() => addElement(PNG_ASSETS.pinkBalloonGarland)}
+          />
+        </div>
+
+        <div className="item-preview">
+          <p className="item-label">🎂 Cake Topper</p>
+          <img
+            src={PNG_ASSETS.cakeTopper}
+            alt="Cake Topper"
+            className="item-image w-16 h-16"
+            onClick={() => addElement(PNG_ASSETS.cakeTopper)}
+          />
+        </div>
+
+        <div className="item-preview">
+          <p className="item-label">🌸 Wedding Arch</p>
+          <img
+            src={PNG_ASSETS.weddingArch}
+            alt="Wedding Arch"
+            className="item-image w-16 h-16"
+            onClick={() => addElement(PNG_ASSETS.weddingArch)}
+          />
+        </div>
 
         <button onClick={handleDeleteElement} className="btn-delete">
           🗑️ Delete Selected Item
@@ -200,30 +221,6 @@ const CanvasEditor = () => {
             ))}
           </Layer>
         </Stage>
-      <button
-          onClick={() => setShowLinks(true)}
-          className="btn-affiliate"
-        >
-          🛒 Compare & Buy
-        </button>
-
-        {showLinks && (
-          <div className="affiliate-links">
-            <h3>Compare & Buy</h3>
-            {elements.map((el) => (
-              <div key={el.id}>
-                <p>{el.name}</p>
-                <a
-                  href={el.affiliateLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🔗 View on Amazon
-                </a>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );

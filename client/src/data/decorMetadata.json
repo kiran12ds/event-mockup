@@ -1,0 +1,38 @@
+[
+  {
+    "id": "pink-balloon-garland",
+    "name": "Pink Balloon Garland",
+    "category": "balloon",
+    "src": "/assets/balloons/pink-balloon-garland.png"
+  },
+  {
+    "id": "blue-balloon",
+    "name": "Blue Balloon",
+    "category": "balloon",
+    "src": "/assets/balloons/blue-balloon.png"
+  },
+  {
+    "id": "cake-topper",
+    "name": "Cake Topper",
+    "category": "cake",
+    "src": "/assets/cakes/cake.png"
+  },
+  {
+    "id": "birthday-cake",
+    "name": "Birthday Cake",
+    "category": "cake",
+    "src": "/assets/cake/birthday-cake.png"
+  },
+  {
+    "id": "wedding-arch",
+    "name": "Wedding Arch",
+    "category": "arch",
+    "src": "/assets/arch/wedding-arch.png"
+  },
+  {
+    "id": "structures",
+    "name": "Party Arch",
+    "category": "arch",
+    "src": "/assets/structures/arch.png"
+  }
+]
