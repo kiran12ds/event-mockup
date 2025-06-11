@@ -108,6 +108,53 @@ const LandingPage = () => {
         ))}
       </section>
 
+      {/* Upload Design + Amazon Links Section */}
+      <ScrollFadeSection>
+        <section className="bg-gradient-to-br from-pink-100 to-purple-100 py-16 px-6 text-center">
+          <h3 className="text-3xl font-bold text-purple-800 mb-6">Try It Now: Upload Your Design</h3>
+          <p className="text-gray-700 max-w-xl mx-auto mb-6">
+            Upload your backdrop or party mockup and we’ll match it with trending decor items from Amazon.
+          </p>
+          <form className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+            <input
+              type="file"
+              accept="image/*"
+              className="border border-gray-300 rounded-md px-4 py-2 bg-white"
+            />
+            <button
+              type="submit"
+              className="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition"
+            >
+              Upload
+            </button>
+          </form>
+
+          <h4 className="text-xl font-semibold text-gray-800 mb-4">Sample Decor Picks (Amazon)</h4>
+          <ul className="space-y-2 text-purple-700 underline">
+            <li>
+              <a href="https://www.amazon.com/dp/B09R6HP7KZ" target="_blank" rel="noopener noreferrer">
+                🎈 Jungle Leaf Garland – Amazon
+              </a>
+            </li>
+            <li>
+              <a href="https://www.amazon.com/dp/B08P5PDBL9" target="_blank" rel="noopener noreferrer">
+                🦁 Lion King Birthday Backdrop – Amazon
+              </a>
+            </li>
+            <li>
+              <a href="https://www.amazon.com/dp/B07PFD6Q7W" target="_blank" rel="noopener noreferrer">
+                🎉 Gold Number Balloons – Amazon
+              </a>
+            </li>
+          </ul>
+
+          <p className="mt-4 text-sm text-gray-500">
+            *As an Amazon Associate, we earn from qualifying purchases.
+          </p>
+        </section>
+      </ScrollFadeSection>
+
+
       {/* FAQ */}
       <ScrollFadeSection>
         <section className="bg-white py-12 px-6 max-w-4xl mx-auto">
