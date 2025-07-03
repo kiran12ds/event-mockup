@@ -3,7 +3,7 @@ const DECOR_ITEMS = [
   {
     name: 'Pink Balloon Garland',
     src: process.env.PUBLIC_URL + '/assets/balloons/pink-balloon-garland.png',
-    affiliateLink: 'https://www.amazon.com/dp/B09XYZ1234?tag=your-affiliate-id',
+    affiliateLink: 'https://amzn.to/3FBPtZX',
   },
   {
     name: 'Arch',

@@ -134,79 +134,88 @@ const CanvasEditor = () => {
 
   return (
     <div className="editor-container">
-      <div className="editor-sidebar">
-        <h1 className="editor-title">Event Mockup Editor</h1>
-        <p className="editor-description"></p>
-        
-        <h2 className="editor-title">Decor Items</h2>
-          <DecorDropdown onSelect={addElement} />
-
-        <button onClick={handleDeleteElement} className="btn-delete">
-          🗑️ Delete Selected Item
-        </button>
-
+      {/* Top Toolbar */}
+      <div className="editor-toolbar">
         <button onClick={handleDownload} className="btn-download">
           💾 Download Design
         </button>
-
-        <h3 className="editor-subtitle">Choose Room Background</h3>
-        <select onChange={handleRoomChange} className="dropdown">
-          {BACKGROUNDS.map(bg => (
-            <option key={bg.value} value={bg.value}>{bg.label}</option>
-          ))}
-        </select>
-
-        <label className="upload-label">Upload Your Own Background</label>
-        <input type="file" accept="image/*" onChange={handleUploadBackground} className="upload-input" />
-        {customBg && (
-          <button onClick={handleRemoveCustomBg} className="btn-remove">
-            ❌ Remove Uploaded Background
-          </button>
-        )}
       </div>
 
-      <div className="editor-canvas">
-        <Stage
-          width={window.innerWidth * 0.75}
-          height={window.innerHeight - 40}
-          ref={stageRef}
-          className="canvas-stage"
-          onMouseDown={(e) => {
-            if (e.target === e.target.getStage()) setSelectedId(null);
-          }}
-        >
-          <Layer>
-            {bgImage && (
-              <KonvaImage
-                image={bgImage}
-                x={0}
-                y={0}
-                width={window.innerWidth * 0.75}
-                height={window.innerHeight - 40}
-              />
-            )}
-            {elements.map((el) => (
-              <DraggableImage
-                key={el.id}
-                id={el.id}
-                src={el.src}
-                isSelected={el.id === selectedId}
-                onSelect={() => setSelectedId(el.id)}
-                onDelete={() => {
-                  setElements((prev) => prev.filter((item) => item.id !== el.id));
-                  setSelectedId(null);
-                }}
-              />
+      <div className="editor-content">
+        {/* Left Sidebar */}
+        <div className="editor-sidebar">
+          <h1 className="editor-title">Event Mockup Editor</h1>
+          
+          <h2 className="editor-title">Decor Items</h2>
+          <DecorDropdown onSelect={addElement} />
+
+          <button onClick={handleDeleteElement} className="btn-delete">
+            🗑️ Delete Selected Item
+          </button>
+
+          <h3 className="editor-subtitle">Choose Room Background</h3>
+          <select onChange={handleRoomChange} className="dropdown">
+            {BACKGROUNDS.map(bg => (
+              <option key={bg.value} value={bg.value}>{bg.label}</option>
             ))}
-          </Layer>
-        </Stage>
-      <button
-          onClick={() => setShowLinks(true)}
+          </select>
+
+          <label className="upload-label">Upload Your Own Background</label>
+          <input type="file" accept="image/*" onChange={handleUploadBackground} className="upload-input" />
+          {customBg && (
+            <button onClick={handleRemoveCustomBg} className="btn-remove">
+              ❌ Remove Uploaded Background
+            </button>
+          )}
+        </div>
+
+        {/* Main Canvas */}
+        <div className="editor-canvas">
+          <Stage
+            width={window.innerWidth * 0.6}
+            height={window.innerHeight - 100}
+            ref={stageRef}
+            className="canvas-stage"
+            onMouseDown={(e) => {
+              if (e.target === e.target.getStage()) setSelectedId(null);
+            }}
+          >
+            <Layer>
+              {bgImage && (
+                <KonvaImage
+                  image={bgImage}
+                  x={0}
+                  y={0}
+                  width={window.innerWidth * 0.6}
+                  height={window.innerHeight - 100}
+                />
+              )}
+              {elements.map((el) => (
+                <DraggableImage
+                  key={el.id}
+                  id={el.id}
+                  src={el.src}
+                  isSelected={el.id === selectedId}
+                  onSelect={() => setSelectedId(el.id)}
+                  onDelete={() => {
+                    setElements((prev) => prev.filter((item) => item.id !== el.id));
+                    setSelectedId(null);
+                  }}
+                />
+              ))}
+            </Layer>
+          </Stage>
+        </div>
+      </div>
+
+      {/* Affiliate Links (now at the bottom right or as a popover) */}
+      <div style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 100 }}>
+        <button
+          onClick={() => setShowLinks(!showLinks)}
           className="btn-affiliate"
         >
           🛒 Compare & Buy
         </button>
-
         {showLinks && (
           <div className="affiliate-links">
             <h3>Compare & Buy</h3>
