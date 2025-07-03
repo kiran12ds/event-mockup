@@ -51,17 +51,10 @@ The app will be available at `http://localhost:3000`.
 3. Enter text prompts on the canvas; AI will suggest relevant Amazon products (e.g., stands, banners, decor).
 4. Export your mockup in high-resolution for event planning or client presentations.
 
-## 📷 Example
-
 ### Screenshot
 
 ![Event Mockup AI Generator Screenshot](screenshots/mockup-example.png)
 
-*Add more screenshots or GIF demos in the `screenshots` folder for better visibility.*
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to fork the repository, submit issues, or open pull requests.
 
 ## 📄 License
 
